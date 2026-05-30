@@ -1,0 +1,338 @@
+{
+  // ========== EDITOR BEHAVIOR ==========
+
+  // ========== TEXT EDITING ==========
+  "tab_size": 2,
+  "hard_tabs": false,
+  "preferred_line_length": 100,
+  "soft_wrap": "editor_width",
+  "show_wrap_guides": true,
+  "wrap_guides": [100],
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "format_on_save": "on",
+  "formatter": {
+    "external": {
+      "command": "bunx",
+      "arguments": ["biome", "format", "--stdin-file-path={buffer_path}"],
+    },
+  },
+  "code_actions_on_format": {
+    "source.fixAll": true,
+  },
+
+  // ========== AUTO-COMPLETION & ASSISTS ==========
+  "show_completions_on_input": true,
+  "use_autoclose": true,
+  "use_auto_surround": true,
+  "auto_indent": "syntax_aware",
+  "auto_indent_on_paste": true,
+  "linked_edits": true,
+
+  // ========== LANGUAGE SERVER ==========
+  "enable_language_server": true,
+
+  "lsp": {
+    "biome": {
+      "binary": {
+        "path": "./node_modules/@biomejs/biome/bin/biome",
+        "arguments": ["lsp-proxy"],
+      },
+      "settings": {
+        "config_path": "<path>/biome.json",
+      },
+    },
+    "typescript-language-server": {
+      "initialization_options": {
+        "experimental": {
+          "serverMode": "semantic",
+        },
+      },
+      "settings": {
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+            },
+            "variableTypes": {
+              "enabled": true,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+          },
+          "preferences": {
+            "includeCompletionsForModuleExports": true,
+            "includeCompletionsWithInsertText": true,
+            "includeAutomaticOptionalChainCompletions": true,
+            "includeCompletionsWithSnippetText": true,
+            "importModuleSpecifierPreference": "non-relative",
+            "autoImportFileExcludePatterns": ["node_modules/@types/**"],
+          },
+          "suggest": {
+            "completeFunctionCalls": true,
+          },
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "tailwindCSS": {
+          "experimental": {
+            "classRegex": ["cn\\(([^)]*)\\)", "clsx\\(([^)]*)\\)"],
+          },
+          "classAttributes": ["className", "class", "cn"],
+          "validate": true,
+          "lint": {
+            "cssConflict": "warning",
+            "invalidApply": "error",
+            "invalidScreen": "error",
+            "invalidVariant": "error",
+            "invalidConfigPath": "error",
+          },
+        },
+      },
+    },
+  },
+
+  // ========== COMPLETIONS ==========
+  "completions": {
+    "words": "fallback",
+    "words_min_length": 3,
+    "lsp": true,
+    "lsp_fetch_timeout_ms": 0,
+    "lsp_insert_mode": "replace_suffix",
+  },
+
+  // ========== INLAY HINTS ==========
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+  },
+
+  // ========== SEMANTIC TOKENS ==========
+  "semantic_tokens": "combined",
+
+  // ========== SEARCH ==========
+  // "search": {
+  //   "whole_word": false,
+  //   "case_sensitive": false,
+  //   "include_ignored": false,
+  //   "regex": false,
+  //   "center_on_match": false,
+  //   "button": true,
+  // },
+  // "use_smartcase_search": true,
+  // "search_wrap": true,
+  // "seed_search_query_from_cursor": "always",
+
+  // // ========== NAVIGATION ==========
+  // "go_to_definition_fallback": "find_all_references",
+  // "go_to_definition_scroll_strategy": "center",
+
+  // // ========== VISUAL ==========
+  // "current_line_highlight": "all",
+  // "selection_highlight": true,
+  // "rounded_selection": true,
+  // "colorize_brackets": true,
+  // "unnecessary_code_fade": 0.3,
+
+  // "cursor_blink": true,
+  // "cursor_shape": "bar",
+
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware",
+    "background_coloring": "disabled",
+  },
+
+  // "scrollbar": {
+  //   "show": "auto",
+  //   "cursors": true,
+  //   "git_diff": true,
+  //   "search_results": true,
+  //   "selected_text": true,
+  //   "selected_symbol": true,
+  //   "diagnostics": "all",
+  // },
+
+  // "vertical_scroll_margin": 5,
+  // "horizontal_scroll_margin": 5,
+  // "scroll_beyond_last_line": "one_page",
+  // "scroll_sensitivity": 1.0,
+  // "fast_scroll_sensitivity": 4.0,
+
+  // // ========== HOVER ==========
+  // "hover_popover_enabled": true,
+  // "hover_popover_delay": 300,
+  // "hover_popover_sticky": true,
+
+  // ========== EDIT PREDICTIONS ==========
+  "show_edit_predictions": true,
+  "edit_predictions_disabled_in": ["comment", "string"],
+
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+    "copilot": {
+      "enable_next_edit_suggestions": true,
+    },
+  },
+
+  // ========== PRIVACY & SECURITY ==========
+  "private_files": [
+    "**/.env*",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.cert",
+    "**/*.crt",
+    "**/secrets.yml",
+    "**/.env.local",
+    "**/.env.*.local",
+  ],
+  // "redact_private_values": true,
+
+  // ========== FILE MANAGEMENT ==========
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/node_modules",
+    "**/dist",
+    "**/.next",
+    "**/.astro",
+    "**/.vercel",
+    "**/build",
+    "**/coverage",
+    "**/.vscode",
+    "**/.idea",
+    "**/*.log",
+    "**/.turbo",
+    "**/.vinxi",
+    "**/.output",
+  ],
+
+  "file_types": {
+    "TypeScript": ["*.ts", "*.tsx"],
+    "TypeScript JSX": ["*.tsx"],
+    "JavaScript JSX": ["*.jsx"],
+    "JSONC": [
+      "**/.zed/**/*.json",
+      "**/zed/**/*.json",
+      "**/Zed/**/*.json",
+      "**/.vscode/**/*.json",
+      "**/tsconfig*.json",
+    ],
+  },
+
+  // ========== LANGUAGE-SPECIFIC ==========
+  "languages": {
+    "TypeScript": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "preferred_line_length": 100,
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "bunx",
+          "arguments": ["biome", "format", "--stdin-file-path={buffer_path}"],
+        },
+      },
+      "language_servers": ["biome"],
+      "show_whitespaces": "selection",
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "preferred_line_length": 100,
+      "formatter": {
+        "external": {
+          "command": "bunx",
+          "arguments": ["biome", "format", "--stdin-file-path={buffer_path}"],
+        },
+      },
+    },
+    "TSX": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "preferred_line_length": 100,
+      "jsx_tag_auto_close": {
+        "enabled": true,
+      },
+      "formatter": {
+        "external": {
+          "command": "bunx",
+          "arguments": ["biome", "format", "--stdin-file-path={buffer_path}"],
+        },
+      },
+      "language_servers": ["biome"],
+    },
+    "JSON": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "formatter": {
+        "external": {
+          "command": "bunx",
+          "arguments": ["biome", "format", "--stdin-file-path={buffer_path}"],
+        },
+      },
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "CSS": {
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "Markdown": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "soft_wrap": "editor_width",
+      "preferred_line_length": 80,
+      "allow_rewrap": "anywhere",
+    },
+    "YAML": {
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+  },
+  "tasks": {
+    "enabled": true,
+  },
+  "allow_rewrap": "in_selections",
+  "colorize_brackets": true,
+  "context_servers": {
+    "context7": {
+      // "source": "custom", // This property is not allowed here.
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {},
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["-y", "shadcn@latest", "mcp"],
+      "env": {},
+    },
+    "better-auth": {
+      "url": "https://mcp.inkeep.com/better-auth/mcp",
+      "headers": {},
+    },
+  },
+}

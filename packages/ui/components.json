@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "aliases": {
+    "components": "@clinic-app/ui/components",
+    "hooks": "@clinic-app/ui/hooks",
+    "lib": "@clinic-app/ui/lib",
+    "ui": "@clinic-app/ui/components",
+    "utils": "@clinic-app/ui/lib/utils"
+  },
+  "iconLibrary": "lucide",
+  "menuAccent": "subtle",
+  "menuColor": "default-translucent",
+  "registries": {
+    "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
+    "@ss-blocks": "https://shadcnstudio.com/r/blocks/{name}.json",
+    "@ss-components": "https://shadcnstudio.com/r/components/{name}.json",
+    "@ss-themes": "https://shadcnstudio.com/r/themes/{name}.json"
+  },
+  "rsc": false,
+  "rtl": true,
+  "style": "radix-nova",
+  "tailwind": {
+    "baseColor": "neutral",
+    "config": "",
+    "css": "src/styles/globals.css",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "tsx": true
+}

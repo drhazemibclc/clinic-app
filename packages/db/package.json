@@ -1,0 +1,53 @@
+{
+  "dependencies": {
+    "@clinic-app/env": "workspace:*",
+    "@clinic-app/utils": "workspace:*",
+    "@faker-js/faker": "10.4.0",
+    "dotenv": "catalog:",
+    "drizzle-orm": "^1.0.0-beta.22",
+    "pg": "^8.21.0",
+    "postgres": "3.4.9",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@clinic-app/config": "workspace:*",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^1.0.0-beta.22",
+    "typescript": "catalog:"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    },
+    "./actions": {
+      "import": "./src/actions/index.ts"
+    },
+    "./schema": {
+      "import": "./src/schema/index.ts"
+    },
+    "./zod": {
+      "import": "./src/zod/index.ts"
+    },
+    "./queries": {
+      "import": "./src/actions/queries.ts"
+    },
+    "./mutations": {
+      "import": "./src/actions/mutations.ts"
+    }
+  },
+  "name": "@clinic-app/db",
+  "scripts": {
+    "check": "biome check --write",
+    "check-types": "tsc --noEmit --incremental --pretty --skipLibCheck --moduleDetection force",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:reset": "bun src/reset.ts",
+    "db:seed": "bun src/seed.ts",
+    "db:studio": "drizzle-kit studio"
+  },
+  "type": "module"
+}

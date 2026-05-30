@@ -1,0 +1,16 @@
+# Project: clinic-app
+# Ecosystem: Typescript
+
+You are working on a TypeScript project.
+Package manager: bun
+Frontend: tanstack-start
+Backend: self
+Database: postgres with drizzle
+API: orpc
+Auth: better-auth
+Testing: vitest-playwright
+Validation: zod
+
+Follow existing code patterns and conventions.
+Use the established project structure.
+Keep this file updated when the project structure changes.

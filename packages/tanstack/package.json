@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "@clinic-app/api": "workspace:*",
+    "@clinic-app/auth": "workspace:*",
+    "@clinic-app/db": "workspace:*",
+    "@clinic-app/env": "workspace:*",
+    "@clinic-app/ui": "workspace:*",
+    "@clinic-app/utils": "workspace:*",
+    "@orpc/tanstack-query": "1.14.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "@tanstack/query-db-collection": "1.0.38",
+    "@tanstack/react-db": "0.1.85",
+    "@tanstack/react-start": "1.168.14",
+    "@tanstack/react-store": "0.11.0",
+    "@tanstack/store": "latest",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@clinic-app/config": "workspace:*",
+    "@types/bun": "latest",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "scripts": {
+    "check": "biome check --write",
+    "check-types": "tsc --noEmit --incremental --pretty --skipLibCheck --moduleDetection force"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "module": "src/index.ts",
+  "name": "@clinic-app/tanstack",
+  "type": "module"
+}

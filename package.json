@@ -1,0 +1,90 @@
+{
+  "dependencies": {
+    "@clinic-app/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@clinic-app/config": "workspace:*",
+    "@playwright/test": "1.60.0",
+    "@types/node": "catalog:",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "turbo": "^2.9.15",
+    "typescript": "catalog:"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --write ."
+    ]
+  },
+  "name": "clinic-app",
+  "overrides": {
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "bun@1.3.14",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "bump-deps": "bunx npm-check-updates --deep -u && bun install && bun run lint:ws",
+    "check": "turbo run check",
+    "check-types": "turbo run check-types",
+    "clean": "turbo run clean && rm -rf .turbo node_modules",
+    "clean:deps": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && rm -f bun.lockb",
+    "clean:dist": "find . -name 'dist' -o -name '.next' -o -name '.turbo' -type d -prune -exec rm -rf '{}' +",
+    "db:generate": "turbo run db:generate --filter=@clinic-app/db",
+    "db:migrate": "turbo run db:migrate --filter=@clinic-app/db",
+    "db:push": "turbo run db:push --filter=@clinic-app/db",
+    "db:seed": "turbo run db:seed --filter=@clinic-app/db",
+    "db:studio": "turbo run db:studio --filter=@clinic-app/db",
+    "dev": "turbo dev",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo run dev --filter=web",
+    "docker:up": "docker-compose up -d",
+    "format": "biome format --write .",
+    "lint": "biome lint . --write",
+    "lint:ws": "sherif --fix",
+    "prepare": "husky",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:ui": "vitest --ui",
+    "test:unit": "vitest run",
+    "ui": "bunx shadcn@latest add  -c packages/ui "
+  },
+  "type": "module",
+  "workspaces": {
+    "catalog": {
+      "@effect/schema": "^0.75.5",
+      "@effect/vitest": "^0.29.0",
+      "@orpc/client": "^1.14.3",
+      "@orpc/openapi": "^1.14.3",
+      "@orpc/server": "^1.14.3",
+      "@orpc/zod": "^1.14.3",
+      "tailwindcss": "^4.3.0",
+      "@playwright/test": "^1.60.0",
+      "@types/node": "^25.9.1",
+      "@types/react": "^19.2.15",
+      "@types/react-dom": "19.2.3",
+      "@vitest/coverage-v8": "^4.1.7",
+      "@vitest/ui": "^4.1.7",
+      "better-auth": "^1.6.11",
+      "dotenv": "^17.4.2",
+      "drizzle-kit": "^1.0.0-beta.22",
+      "drizzle-orm": "^1.0.0-beta.22",
+      "effect": "^3.21.2",
+      "jsdom": "^29.1.1",
+      "next-themes": "^0.4.6",
+      "playwright": "^1.60.0",
+      "react": "^19.2.6",
+      "react-dom": "^19.2.6",
+      "typescript": "^6.0.3",
+      "vitest": "^4.1.7",
+      "zod": "^4.4.3"
+    },
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.7.0-beta.3",
+    "@clinic-app/db": "workspace:*",
+    "@clinic-app/env": "workspace:*",
+    "@clinic-app/utils": "workspace:*",
+    "@faker-js/faker": "10.4.0",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@clinic-app/config": "workspace:*",
+    "dotenv-cli": "11.0.0",
+    "typescript": "catalog:"
+  },
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "main": "./src/index.ts",
+  "name": "@clinic-app/auth",
+  "scripts": {
+    "auth:admin": "dotenv -e ../../apps/web/.env -- bun src/admin.ts",
+    "auth:generate": "dotenv -e ../../apps/web/.env -- bunx auth@latest generate --config ./src/index.ts --output ../db/src/schema/auth.ts",
+    "auth:migrate": "dotenv -e ../../apps/web/.env -- bunx auth@latest migrate --config ./src/index.ts",
+    "check": "biome check --write",
+    "check-types": "tsc --noEmit --incremental --pretty --skipLibCheck --moduleDetection force",
+    "format": "biome format --write",
+    "lint": "biome lint . --write"
+  },
+  "type": "module",
+  "types": "./src/index.ts"
+}

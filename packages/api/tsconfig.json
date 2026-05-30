@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "lib": ["esnext", "dom"],
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "extends": "@clinic-app/config/tsconfig.base.json"
+}

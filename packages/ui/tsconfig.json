@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "paths": {
+      "@clinic-app/ui/*": ["./src/*"]
+    },
+    "types": ["node"]
+  },
+  "exclude": ["node_modules"],
+  "extends": "@clinic-app/config/tsconfig.base.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

@@ -1,0 +1,86 @@
+# --- Runtime Configuration ---
+[console]
+depth = 5
+logLevel = "error" # keep strict for prod-like dev
+
+# --- Package Manager (Turborepo + Monorepo Optimized) ---
+[install]
+# Use "isolated" for strict monorepo dependency boundaries
+linker = "isolated"
+frozenLockfile = false
+
+# Text lockfile for better Git collaboration
+saveTextLockfile = true
+
+# Exact versions for medical software stability
+exact = true
+
+# Ensure workspace linking for monorepo packages
+linkWorkspacePackages = true
+
+# Always include devDependencies in dev, skip in prod
+production = false
+
+# Skip optional deps for leaner installs
+optional = true
+
+# Skip peer warnings for faster installs
+peer = true
+
+# --- Cache Configuration ---
+[install.cache]
+disable = false
+disableManifest = false
+
+# --- Test Runner (Optimized for Monorepo) ---
+[test]
+coverage = true
+coverageThreshold = 0.9
+root = "./"
+
+coveragePathIgnorePatterns = [
+  "**/src-tauri/**",
+  "**/migrations/**",
+  "**/node_modules/**",
+  "**/.turbo/**",
+  "**/dist/**",
+  "**/.next/**",
+]
+
+coverageReporter = ["text", "lcov"] # Valid reporters for Bun
+coverageSkipTestFiles = true
+# preload = ["./test-setup.ts"]
+
+[server]
+# Server timeout configuration
+idleTimeout = 60
+port = 3000
+
+# --- Run Configuration ---
+[run]
+bun = true
+shell = "system"
+sourcemap = false # Disable sourcemaps to avoid warnings
+
+# --- Performance ---
+smol = false
+# Enable parallel installs for faster monorepo bootstraps
+parallel = true
+
+# --- Debugging ---
+[debug]
+editor = "code"
+
+# --- JSX Configuration (for TanStack Start) ---
+jsx = "react-jsx"
+jsxImportSource = "react"
+
+# --- Development Server ---
+# preload = ["./src/instrumentation.ts"]
+
+# --- Experimental (Optional) ---
+[experimental]
+# Enable Bun’s new resolver for better monorepo perf
+resolver = "next"
+[dev]
+sourcemap = true
